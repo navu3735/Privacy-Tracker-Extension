@@ -4,35 +4,78 @@
   <meta charset="UTF-8">
   <title>Privacy Visualizer</title>
   <style>
-    body {
-      width: 400px;
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 450px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 400px;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .header p {
+      font-size: 12px;
+      opacity: 0.9;
     }
     
     .container {
-      background: white;
       padding: 20px;
-      border-radius: 10px;
-    }
-    
-    h1 {
-      margin: 0;
-      color: #333;
+      background: white;
+      min-height: 400px;
     }
     
     #results {
-      margin-top: 15px;
+      animation: fadeIn 0.3s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    
+    li {
+      margin: 4px 0;
     }
   </style>
 </head>
 <body>
+  <div class="header">
+    <h1>🔒 Privacy Visualizer</h1>
+    <p>Know who's tracking you</p>
+  </div>
+  
   <div class="container">
-    <h1>🔒 Privacy Grade</h1>
     <div id="results">
-      <p>Loading analysis...</p>
+      <div style="text-align: center; padding: 20px;">
+        <p style="font-size: 14px; color: #666;">⏳ Analyzing page...</p>
+        <p style="font-size: 12px; color: #999; margin-top: 10px;">Please wait a moment...</p>
+      </div>
     </div>
   </div>
 

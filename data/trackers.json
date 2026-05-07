@@ -3,23 +3,82 @@
     {
       "id": "google-analytics",
       "name": "Google Analytics",
-      "domains": ["google-analytics.com", "analytics.google.com"],
+      "domains": ["google-analytics.com", "analytics.google.com", "www.googletagmanager.com"],
       "category": "analytics",
-      "risk": "medium"
+      "risk": "medium",
+      "dataCollected": ["Page views", "User behavior", "Device info"]
     },
     {
       "id": "facebook-pixel",
       "name": "Facebook Pixel",
-      "domains": ["facebook.com", "fbcdn.net"],
+      "domains": ["facebook.com", "fbcdn.net", "connect.facebook.net"],
       "category": "advertising",
-      "risk": "high"
+      "risk": "high",
+      "dataCollected": ["Browsing history", "Interests", "Conversions"]
+    },
+    {
+      "id": "google-ads",
+      "name": "Google Ads",
+      "domains": ["google.com/ads", "pagead.googlesyndication.com", "adservice.google.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Interests", "Browsing history", "Location"]
     },
     {
       "id": "twitter-analytics",
       "name": "Twitter Analytics",
-      "domains": ["twitter.com"],
+      "domains": ["twitter.com", "analytics.twitter.com"],
       "category": "analytics",
-      "risk": "high"
+      "risk": "high",
+      "dataCollected": ["Tweets viewed", "Engagement"]
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn Tracking",
+      "domains": ["linkedin.com", "lnkd.in"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Professional profile", "Job interests"]
+    },
+    {
+      "id": "hotjar",
+      "name": "Hotjar Analytics",
+      "domains": ["hotjar.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["Session recordings", "User interactions"]
+    },
+    {
+      "id": "mixpanel",
+      "name": "Mixpanel Analytics",
+      "domains": ["mixpanel.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["User events", "Funnel analysis"]
+    },
+    {
+      "id": "amplitude",
+      "name": "Amplitude Analytics",
+      "domains": ["amplitude.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["User behavior", "Event data"]
+    },
+    {
+      "id": "criteo",
+      "name": "Criteo Ads",
+      "domains": ["criteo.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Shopping history", "Product interests"]
+    },
+    {
+      "id": "appnexus",
+      "name": "Xandr Ad Network",
+      "domains": ["appnexus.com", "xandr.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["User behavior", "Ad preferences"]
     }
   ]
 }
