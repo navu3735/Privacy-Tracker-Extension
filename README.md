@@ -1,6 +1,51 @@
 # 🔒 Privacy & Tracker Visualizer
 
-A Chrome extension that scans websites and gives them a **Privacy Grade** (A-F) based on known tracking scripts, cookies, and where your data is being sent.
+A Chrome extension that scans websites and gives them a **Privacy Grade** (A–F) based on known tracking scripts, third-party hosts, cookies, storage keys, and network activity surfaced from the page.
+
+## Setup (install in Chrome)
+
+### Prerequisites
+
+- **Google Chrome** (or another Chromium browser with Manifest V3 support), current version recommended.
+- This repo cloned or downloaded on your machine.
+
+### 1. Get the code
+
+```bash
+git clone https://github.com/navu3735/Privacy-Tracker-Extension.git
+cd Privacy-Tracker-Extension
+```
+
+If you use a ZIP download instead, extract it and open the folder that contains `manifest.json`.
+
+### 2. Load the unpacked extension
+
+1. Open Chrome and go to `chrome://extensions/`.
+2. Turn **Developer mode** **on** (top right).
+3. Click **Load unpacked**.
+4. Choose the project folder (the same folder as `manifest.json`).
+
+Chrome will keep loading this folder until you remove the extension or delete/move the project.
+
+### 3. Pin and run
+
+1. Click the **puzzle** icon on the toolbar and **pin** “Privacy & Tracker Visualizer” if you want the icon always visible.
+2. Open a normal `http://` or `https://` page (`chrome://` pages cannot be scanned).
+3. Click the extension icon for the popup: grade, named trackers, third-party host list, scope stats, and scan log.
+
+### Optional: quick test from a terminal (Windows)
+
+Opens Chrome with the extension for that session:
+
+```powershell
+& "$env:ProgramFiles\Google\Chrome\Application\chrome.exe" --load-extension="C:\full\path\to\Privacy-Tracker-Extension"
+```
+
+Use your real path. For a **persistent** install, use **Load unpacked** above.
+
+### Chrome Web Store
+
+Publishing is separate: zip the extension, use the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole), and complete listing and privacy fields. This repo targets **developer (unpacked)** installs by default.
 
 ## 📊 How It Works (Simple Explanation)
 
@@ -27,17 +72,17 @@ Imagine your browser is a **detective** 🕵️ investigating websites:
 
 ```
 Privacy Visualizer Extension/
-├── manifest.json          ← Extension config (tells Chrome about us)
+├── manifest.json          ← Extension config
+├── icons/
+│   └── logo.png           ← Toolbar & listing icons
 ├── src/
-│   ├── content-script.js  ← Detective (runs on websites)
-│   └── background.js      ← Judge/Processor (analyzes data)
+│   ├── content-script.js  ← Collects page & network signals
+│   └── background.js      ← Tracker matching, grading, storage
 ├── ui/
-│   ├── popup.html         ← What users see
-│   └── popup.js           ← Popup logic
-├── data/
-│   └── trackers.json      ← Database of known trackers
-└── assets/
-    └── icons/             ← Extension icons
+│   ├── popup.html
+│   └── popup.js
+└── data/
+    └── trackers.json      ← Known tracker signatures
 ```
 
 ## 🎓 Understanding Each File
@@ -109,20 +154,8 @@ Privacy Visualizer Extension/
 }
 ```
 
-## 🎮 How to Install & Test
+## 🎮 Try different sites
 
-### Step 1: Load in Chrome
-1. Open: `chrome://extensions/`
-2. Turn ON **Developer mode** (top right)
-3. Click **Load unpacked**
-4. Select your `Privacy Visualizer Extension` folder
-
-### Step 2: Test It!
-1. Visit any website (try `amazon.com`)
-2. Click the extension icon (top right toolbar)
-3. See your privacy grade!
-
-### Step 3: Try Different Sites
 | Website | Expected Grade | Why? |
 |---------|----------------|------|
 | amazon.com | D-F | Heavy tracking for ads |
@@ -132,13 +165,15 @@ Privacy Visualizer Extension/
 
 ## 📊 Privacy Grades
 
-| Grade | Trackers | What It Means |
-|-------|----------|---------------|
-| **A** | 0 | Excellent - Almost no tracking |
-| **B** | 1-2 | Good - Minimal tracking |
-| **C** | 3-4 | Fair - Moderate tracking |
-| **D** | 5-6 | Poor - Heavy tracking |
-| **F** | 7+ | Bad - Extreme tracking |
+Grading uses matched trackers (with risk weights), tracking-related cookies, third-party host volume, and storage-key heuristics—not a flat tracker count alone.
+
+| Grade | Typical meaning |
+|-------|-----------------|
+| **A** | Very light tracking signals |
+| **B** | Low |
+| **C** | Moderate |
+| **D** | Heavy |
+| **F** | Very heavy |
 
 ## 🛠️ How to Customize
 
@@ -164,7 +199,7 @@ if (trackerCount <= 4) return { grade: 'C', text: 'Fair' };
 ```
 
 ### Change Colors
-Edit `ui/popup.html`, search for color codes like `#667eea` and change to any hex color.
+Edit `ui/popup.html` (CSS variables such as `--accent`, `--glass-bg`, and related rules).
 
 ## 🧠 How It All Connects
 
