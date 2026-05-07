@@ -3,50 +3,58 @@
     {
       "id": "google-analytics",
       "name": "Google Analytics",
-      "domains": ["google-analytics.com", "analytics.google.com", "www.googletagmanager.com"],
+      "domains": ["google-analytics.com", "analytics.google.com", "www.googletagmanager.com", "googletagmanager.com", "gtag"],
       "category": "analytics",
       "risk": "medium",
       "dataCollected": ["Page views", "User behavior", "Device info"]
     },
     {
-      "id": "facebook-pixel",
-      "name": "Facebook Pixel",
-      "domains": ["facebook.com", "fbcdn.net", "connect.facebook.net"],
-      "category": "advertising",
-      "risk": "high",
-      "dataCollected": ["Browsing history", "Interests", "Conversions"]
-    },
-    {
       "id": "google-ads",
       "name": "Google Ads",
-      "domains": ["google.com/ads", "pagead.googlesyndication.com", "adservice.google.com"],
+      "domains": ["google.com/ads", "pagead.googlesyndication.com", "adservice.google.com", "googleadservices.com"],
       "category": "advertising",
       "risk": "high",
       "dataCollected": ["Interests", "Browsing history", "Location"]
     },
     {
+      "id": "facebook-pixel",
+      "name": "Facebook Pixel",
+      "domains": ["facebook.com", "fbcdn.net", "connect.facebook.net", "facebook.net"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Browsing history", "Interests", "Conversions"]
+    },
+    {
+      "id": "facebook-ads",
+      "name": "Facebook Ads",
+      "domains": ["facebook-ads", "fbadservers.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Demographic data", "Interests", "Purchase behavior"]
+    },
+    {
       "id": "twitter-analytics",
       "name": "Twitter Analytics",
-      "domains": ["twitter.com", "analytics.twitter.com"],
+      "domains": ["twitter.com", "analytics.twitter.com", "twimg.com"],
       "category": "analytics",
       "risk": "high",
-      "dataCollected": ["Tweets viewed", "Engagement"]
+      "dataCollected": ["Tweets viewed", "Engagement", "Preferences"]
     },
     {
       "id": "linkedin",
       "name": "LinkedIn Tracking",
-      "domains": ["linkedin.com", "lnkd.in"],
+      "domains": ["linkedin.com", "lnkd.in", "licdn.com"],
       "category": "advertising",
       "risk": "high",
-      "dataCollected": ["Professional profile", "Job interests"]
+      "dataCollected": ["Professional profile", "Job interests", "Career data"]
     },
     {
       "id": "hotjar",
       "name": "Hotjar Analytics",
-      "domains": ["hotjar.com"],
+      "domains": ["hotjar.com", "hjcdn.com"],
       "category": "analytics",
       "risk": "medium",
-      "dataCollected": ["Session recordings", "User interactions"]
+      "dataCollected": ["Session recordings", "User interactions", "Form data"]
     },
     {
       "id": "mixpanel",
@@ -54,7 +62,7 @@
       "domains": ["mixpanel.com"],
       "category": "analytics",
       "risk": "medium",
-      "dataCollected": ["User events", "Funnel analysis"]
+      "dataCollected": ["User events", "Funnel analysis", "Retention"]
     },
     {
       "id": "amplitude",
@@ -62,7 +70,15 @@
       "domains": ["amplitude.com"],
       "category": "analytics",
       "risk": "medium",
-      "dataCollected": ["User behavior", "Event data"]
+      "dataCollected": ["User behavior", "Event data", "Session info"]
+    },
+    {
+      "id": "segment",
+      "name": "Segment Analytics",
+      "domains": ["segment.com", "analytics.js"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["Event data", "User properties", "Page views"]
     },
     {
       "id": "criteo",
@@ -70,7 +86,7 @@
       "domains": ["criteo.com"],
       "category": "advertising",
       "risk": "high",
-      "dataCollected": ["Shopping history", "Product interests"]
+      "dataCollected": ["Shopping history", "Product interests", "Prices viewed"]
     },
     {
       "id": "appnexus",
@@ -78,7 +94,207 @@
       "domains": ["appnexus.com", "xandr.com"],
       "category": "advertising",
       "risk": "high",
-      "dataCollected": ["User behavior", "Ad preferences"]
+      "dataCollected": ["User behavior", "Ad preferences", "Bid data"]
+    },
+    {
+      "id": "rubicon",
+      "name": "Rubicon Project Ads",
+      "domains": ["rubiconproject.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Ad preferences", "User behavior"]
+    },
+    {
+      "id": "openx",
+      "name": "OpenX Ads",
+      "domains": ["openx.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Browsing behavior", "Ad preferences"]
+    },
+    {
+      "id": "pubmatic",
+      "name": "PubMatic Ads",
+      "domains": ["pubmatic.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["User behavior", "Ad performance"]
+    },
+    {
+      "id": "doubleclick",
+      "name": "DoubleClick (Google)",
+      "domains": ["doubleclick.net", "google.com/ads/doubleclick"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Ad impressions", "Clicks", "Conversions"]
+    },
+    {
+      "id": "mouseflow",
+      "name": "Mouseflow Analytics",
+      "domains": ["mouseflow.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["Session recordings", "Form analytics"]
+    },
+    {
+      "id": "fullstory",
+      "name": "FullStory Session Replay",
+      "domains": ["fullstory.com"],
+      "category": "analytics",
+      "risk": "high",
+      "dataCollected": ["Session recordings", "User interactions", "Form inputs"]
+    },
+    {
+      "id": "kissmetrics",
+      "name": "KissMetrics Analytics",
+      "domains": ["kissmetrics.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["User behavior", "Conversions"]
+    },
+    {
+      "id": "google-doubleclick",
+      "name": "Google DoubleClick Floodlight",
+      "domains": ["googleadservices.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Conversions", "Click data", "Impression data"]
+    },
+    {
+      "id": "tiktok-pixel",
+      "name": "TikTok Pixel",
+      "domains": ["tiktok.com", "analytics.tiktok.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["User actions", "Conversion data", "Video views"]
+    },
+    {
+      "id": "pinterest-analytics",
+      "name": "Pinterest Analytics",
+      "domains": ["pinterest.com", "pinimg.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Pins clicked", "User interests", "Saves"]
+    },
+    {
+      "id": "snapchat-pixel",
+      "name": "Snapchat Pixel",
+      "domains": ["sc-static.net", "snapchat.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["View data", "User actions", "Conversions"]
+    },
+    {
+      "id": "reddit-pixel",
+      "name": "Reddit Pixel",
+      "domains": ["reddit.com", "redditmedia.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["User interests", "Post views", "Comments"]
+    },
+    {
+      "id": "instagram-analytics",
+      "name": "Instagram Analytics",
+      "domains": ["instagram.com", "instagram.com/ads"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Posts viewed", "Interactions", "Story views"]
+    },
+    {
+      "id": "amazon-ads",
+      "name": "Amazon Advertising",
+      "domains": ["amazon-adsystem.com", "z.amazon.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Product views", "Purchase history", "Browsing"]
+    },
+    {
+      "id": "bing-ads",
+      "name": "Bing Ads",
+      "domains": ["bingads.microsoft.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Clicks", "Impressions", "Conversions"]
+    },
+    {
+      "id": "floodlight",
+      "name": "Floodlight Tag",
+      "domains": ["floodlight.com"],
+      "category": "advertising",
+      "risk": "high",
+      "dataCollected": ["Conversions", "Sales data", "User actions"]
+    },
+    {
+      "id": "chartbeat",
+      "name": "Chartbeat Analytics",
+      "domains": ["chartbeat.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["Page traffic", "User engagement", "Reading time"]
+    },
+    {
+      "id": "comscore",
+      "name": "Comscore Analytics",
+      "domains": ["comscore.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["Site traffic", "User demographics", "Behavior"]
+    },
+    {
+      "id": "quantcast",
+      "name": "Quantcast Analytics",
+      "domains": ["quantcast.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["User traffic", "Demographics", "Browsing behavior"]
+    },
+    {
+      "id": "adobe-analytics",
+      "name": "Adobe Analytics",
+      "domains": ["omniture.com", "adobe.com/analytics"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["Page views", "Click data", "Conversion events"]
+    },
+    {
+      "id": "matomo",
+      "name": "Matomo Analytics",
+      "domains": ["matomo.com", "piwik.org"],
+      "category": "analytics",
+      "risk": "low",
+      "dataCollected": ["Page views", "User behavior"]
+    },
+    {
+      "id": "crazy-egg",
+      "name": "Crazy Egg Heatmaps",
+      "domains": ["crazyegg.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["Click heatmaps", "Scroll maps", "Session recordings"]
+    },
+    {
+      "id": "intercom",
+      "name": "Intercom Chat",
+      "domains": ["intercom.io"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["User messages", "Behavior", "Preferences"]
+    },
+    {
+      "id": "zendesk",
+      "name": "Zendesk Tracking",
+      "domains": ["zendesk.com"],
+      "category": "analytics",
+      "risk": "low",
+      "dataCollected": ["Support tickets", "User issues"]
+    },
+    {
+      "id": "drift",
+      "name": "Drift Chatbot",
+      "domains": ["drift.com"],
+      "category": "analytics",
+      "risk": "medium",
+      "dataCollected": ["Chat messages", "User behavior", "Page visits"]
     }
   ]
 }

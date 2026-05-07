@@ -1,5 +1,5 @@
 // Popup Script - Shows results to user
-// Gets data from background worker and displays it nicely
+// Gets data from background worker and displays it beautifully
 
 document.addEventListener('DOMContentLoaded', () => {
   loadAnalysis();
@@ -12,12 +12,6 @@ function loadAnalysis() {
       displayAnalysis(response.analysis);
     } else {
       // Analysis not ready yet, try again in 1 second
-      document.getElementById('results').innerHTML = `
-        <div style="text-align: center; padding: 20px;">
-          <p>⏳ Analyzing page...</p>
-          <p style="font-size: 12px; color: #999;">This usually takes 1-2 seconds</p>
-        </div>
-      `;
       setTimeout(loadAnalysis, 1000);
     }
   });
@@ -26,71 +20,49 @@ function loadAnalysis() {
 function displayAnalysis(analysis) {
   const { grade, gradeText, trackers, countries, totalTrackers, cookies } = analysis;
   
-  // Color code for grades
-  const gradeColors = {
-    'A': '#10b981',
-    'B': '#3b82f6',
-    'C': '#f59e0b',
-    'D': '#ef5350',
-    'F': '#dc2626'
-  };
-  
   let html = `
     <!-- Grade Card -->
-    <div style="text-align: center; background: #f9fafb; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-      <div style="font-size: 12px; color: #666; margin-bottom: 5px;">YOUR PRIVACY SCORE</div>
-      <div style="
-        font-size: 48px; 
-        font-weight: bold; 
-        color: ${gradeColors[grade]};
-        margin: 10px 0;
-      ">${grade}</div>
-      <div style="font-size: 14px; color: #333;">${gradeText} Privacy</div>
+    <div class="grade-card">
+      <div class="grade-label">Privacy Score</div>
+      <div class="grade-display ${grade}">${grade}</div>
+      <div class="grade-text">${gradeText} Privacy</div>
+      <div class="grade-subtext">${totalTrackers} tracker${totalTrackers !== 1 ? 's' : ''} detected</div>
     </div>
   `;
   
   // Trackers section
   if (trackers && trackers.length > 0) {
     html += `
-      <div style="margin-bottom: 15px;">
-        <div style="font-weight: bold; color: #333; margin-bottom: 10px;">
-          🕵️ Found ${totalTrackers} Tracker(s)
-        </div>
+      <div class="section">
+        <div class="section-title">🕵️ Tracking Scripts (${totalTrackers})</div>
+        <div class="tracker-list">
     `;
     
     trackers.forEach(tracker => {
-      const riskColor = tracker.risk === 'high' ? '#ef5350' : '#f59e0b';
+      const riskClass = tracker.risk.toLowerCase();
       html += `
-        <div style="
-          background: #f9fafb;
-          padding: 10px;
-          margin-bottom: 8px;
-          border-left: 3px solid ${riskColor};
-          border-radius: 4px;
-        ">
-          <div style="font-weight: bold; color: #333;">${tracker.name}</div>
-          <div style="font-size: 12px; color: #666; margin-top: 4px;">
-            📊 ${tracker.category.toUpperCase()} | Risk: <span style="color: ${riskColor}; font-weight: bold;">${tracker.risk.toUpperCase()}</span>
-          </div>
-          <div style="font-size: 11px; color: #999; margin-top: 4px;">
-            ${tracker.dataCollected.join(', ')}
+        <div class="tracker-item ${riskClass}">
+          <div class="tracker-name">${tracker.name}</div>
+          <div class="tracker-meta">
+            <span class="tracker-badge">${tracker.category.toUpperCase()}</span>
+            <span class="tracker-badge risk-${riskClass}">Risk: ${tracker.risk.toUpperCase()}</span>
           </div>
         </div>
       `;
     });
     
-    html += `</div>`;
+    html += `
+        </div>
+      </div>
+    `;
   } else {
     html += `
-      <div style="
-        background: #dbeafe;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        margin-bottom: 15px;
-        color: #0369a1;
-      ">
-        ✅ No known trackers found!
+      <div class="section" style="background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%); border-left: 4px solid #0369a1;">
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-size: 32px; margin-bottom: 8px;">✅</div>
+          <div style="color: #0369a1; font-weight: 600; font-size: 14px;">No Known Trackers Found!</div>
+          <div style="color: #0369a1; opacity: 0.8; font-size: 12px; margin-top: 4px;">This site has minimal tracking</div>
+        </div>
       </div>
     `;
   }
@@ -98,21 +70,13 @@ function displayAnalysis(analysis) {
   // Countries section
   if (countries && countries.length > 0) {
     html += `
-      <div style="margin-bottom: 15px;">
-        <div style="font-weight: bold; color: #333; margin-bottom: 8px;">🌍 Data Sent To</div>
-        <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+      <div class="section">
+        <div class="section-title">🌍 Data Destinations</div>
+        <div class="countries-container">
     `;
     
     countries.forEach(country => {
-      html += `
-        <span style="
-          background: #e5e7eb;
-          padding: 6px 12px;
-          border-radius: 20px;
-          font-size: 12px;
-          color: #374151;
-        ">${country}</span>
-      `;
+      html += `<span class="country-tag">${country}</span>`;
     });
     
     html += `
@@ -124,31 +88,26 @@ function displayAnalysis(analysis) {
   // Tracking cookies info
   if (cookies && cookies.trackingCookies.length > 0) {
     html += `
-      <div style="margin-bottom: 15px;">
-        <div style="font-weight: bold; color: #333; margin-bottom: 8px;">🍪 Tracking Cookies Found</div>
-        <div style="background: #fef3c7; padding: 10px; border-radius: 6px; font-size: 12px; color: #78350f;">
-          ${cookies.trackingCookies.join(', ')}
+      <div class="section">
+        <div class="section-title">🍪 Tracking Cookies (${cookies.trackingCookies.length})</div>
+        <div class="cookie-warning">
+          <strong>Found tracking cookies:</strong><br>
+          ${cookies.trackingCookies.slice(0, 5).join(', ')}${cookies.trackingCookies.length > 5 ? '...' : ''}
         </div>
       </div>
     `;
   }
   
-  // Tips section
+  // Privacy tips
   html += `
-    <div style="
-      background: #f0fdf4;
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 12px;
-      color: #166534;
-      border-left: 3px solid #16a34a;
-    ">
-      <div style="font-weight: bold; margin-bottom: 6px;">💡 Tips to Stay Private</div>
-      <ul style="margin: 0; padding-left: 20px;">
-        <li>Use privacy-focused search engines</li>
+    <div class="section" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 4px solid #16a34a;">
+      <div class="section-title">💡 Privacy Tips</div>
+      <ul class="tips-list">
+        <li>Use privacy-focused search engines (DuckDuckGo)</li>
         <li>Enable "Do Not Track" in browser settings</li>
-        <li>Clear cookies regularly</li>
+        <li>Clear cookies regularly (Settings → Privacy)</li>
         <li>Use a VPN for extra protection</li>
+        <li>Install ad blockers (uBlock Origin)</li>
       </ul>
     </div>
   `;
