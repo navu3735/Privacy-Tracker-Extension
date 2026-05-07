@@ -1,0 +1,25 @@
+{
+  "trackers": [
+    {
+      "id": "google-analytics",
+      "name": "Google Analytics",
+      "domains": ["google-analytics.com", "analytics.google.com"],
+      "category": "analytics",
+      "risk": "medium"
+    },
+    {
+      "id": "facebook-pixel",
+      "name": "Facebook Pixel",
+      "domains": ["facebook.com", "fbcdn.net"],
+      "category": "advertising",
+      "risk": "high"
+    },
+    {
+      "id": "twitter-analytics",
+      "name": "Twitter Analytics",
+      "domains": ["twitter.com"],
+      "category": "analytics",
+      "risk": "high"
+    }
+  ]
+}

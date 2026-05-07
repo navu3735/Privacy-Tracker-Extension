@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Privacy Visualizer</title>
+  <style>
+    body {
+      width: 400px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    
+    h1 {
+      margin: 0;
+      color: #333;
+    }
+    
+    #results {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔒 Privacy Grade</h1>
+    <div id="results">
+      <p>Loading analysis...</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
